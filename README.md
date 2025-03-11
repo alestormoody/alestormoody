@@ -18,7 +18,7 @@ Hi! I’m Alessio Tortolini, a Full Stack Developer with expertise in PHP, JavaS
 - Salesforce B2C Commerce Developer  
 - DevOps on AWS Specialization  
 - Google Project Management
-- Node.JS, React.JS, Vue.JS
+- Node.JS, React.JS, Vue.JS, Python
 
 ### 🌍 Languages
 - Italian (native)  
