@@ -1,4 +1,3 @@
-# Alessio Tortolini
 ## Full Stack Developer | Project Manager | 🇮🇹 🇬🇧
 Hi! I’m Alessio Tortolini, a Full Stack Developer with expertise in PHP, JavaScript, CSS, and UI design. I specialize in backend development using PHP/Laravel.
 
