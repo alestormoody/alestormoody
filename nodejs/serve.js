@@ -16,6 +16,10 @@ const serve = http.createServer((req, res) => {
 
     // set the content
     res.write('<h1>Hello World!</h1>');
+    
+    // use of Magic Methods
+    res.write(`dirname : ${__dirname} <br>`);
+    res.write(`dir + filename : ${__filename}`);
 
     // end the response
     res.end();
