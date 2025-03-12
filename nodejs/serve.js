@@ -1,6 +1,9 @@
 // require the http module
 const http = require('http');
 
+// require the Circle module
+const circle = require('./modules/Circle');
+
 // define the port
 const PORT = 80;
 
@@ -14,23 +17,12 @@ const serve = http.createServer((req, res) => {
         'Expires': '0'
     });
 
-    // set the content
-    res.write('<h1>Hello World!</h1>');
-    
-    // use of Magic Methods
-    res.write(`dirname : ${__dirname} <br>`);
-    res.write(`dir + filename : ${__filename} <br>`);
+    // calculate the area of a circle - input from terminal
+    if(process.argv[2]) res.write(`Area of a circle with radius ${process.argv[2]} is : ${circle.area(process.argv[2])}`);
 
-    /**
-     *  **TERMINAL**
-     * running the server from the terminal you use the command :
-     * node serve.js
-     * 
-     * if you append data after the command, it will be passed as arguments.
-     * to access the arguments, you can use the process.argv
-     * node serve.js arg1 arg2 arg3 ...
-     */
-    if(process.argv.length > 2) res.write(`process.argv : ${process.argv[2]}`);
+    // calculate the area of a circle - static input
+    let radius = 5;
+    res.write(`<br>Area of a circle with radius ${radius} is : ${circle.area(radius)}`);
 
     // end the response
     res.end();
