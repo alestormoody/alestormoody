@@ -1,28 +1,54 @@
 // require the http module
 const http = require('http');
+// define the port
+const PORT = 80;
+
+// require the fs module - file system
+const fs = require('fs');
+// require the path module - to manipulate file paths
+const path = require('path');
+// define the logs file name and folder name
+const logs = 'error.log';
+const folder = 'storage/logs/';
+const logFile = path.join(__dirname, folder, logs);
 
 // require the Circle module
 const circle = require('./modules/Circle');
 
-// define the port
-const PORT = 80;
-
 // create the server
 const serve = http.createServer((req, res) => {
-    // set the response header
-    res.writeHead(200, {
-        'Content-Type': 'text/html',
-        'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache',
-        'Expires': '0'
-    });
+
+    // to avoid favicon error that duplicate log errors
+    if (req.url === '/favicon.ico') return res.end();
 
     // calculate the area of a circle - input from terminal
-    if(process.argv[2]) res.write(`Area of a circle with radius ${process.argv[2]} is : ${circle.area(process.argv[2])}`);
+    try {
+        if (!process.argv[2]) throw new Error('Please provide a radius');
 
-    // calculate the area of a circle - static input
-    let radius = 5;
-    res.write(`<br>Area of a circle with radius ${radius} is : ${circle.area(radius)}`);
+        let area = circle.area(process.argv[2]);
+
+        if (isNaN(area) || process.argv[2] <= 0) throw new Error('Please provide a valid number');
+        // set the response header
+        res.writeHead(200, {
+            'Content-Type': 'text/html',
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache',
+            'Expires': '0'
+        });
+        res.write(`The area of a circle with radius ${process.argv[2]} is ${area}`);
+        console.log(`The area of a circle with radius ${process.argv[2]} is ${area}`);
+
+    } catch (error) {
+
+        // check if the file exists
+        if (!fs.existsSync(logFile)) {
+            fs.writeFileSync(logFile, '');
+        }
+
+        // append the error to the file
+        fs.appendFileSync(logFile, `${new Date()} - ${error}\n`);
+
+    }
 
     // end the response
     res.end();
@@ -32,4 +58,4 @@ const serve = http.createServer((req, res) => {
 
 serve.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
- });
+});
