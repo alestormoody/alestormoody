@@ -19,7 +19,18 @@ const serve = http.createServer((req, res) => {
     
     // use of Magic Methods
     res.write(`dirname : ${__dirname} <br>`);
-    res.write(`dir + filename : ${__filename}`);
+    res.write(`dir + filename : ${__filename} <br>`);
+
+    /**
+     *  **TERMINAL**
+     * running the server from the terminal you use the command :
+     * node serve.js
+     * 
+     * if you append data after the command, it will be passed as arguments.
+     * to access the arguments, you can use the process.argv
+     * node serve.js arg1 arg2 arg3 ...
+     */
+    if(process.argv.length > 2) res.write(`process.argv : ${process.argv[2]}`);
 
     // end the response
     res.end();
