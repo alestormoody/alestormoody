@@ -3,8 +3,6 @@ const http = require('http');
 // define the port
 const PORT = 80;
 
-// require the fs module - file system
-const fs = require('fs');
 // require the path module - to manipulate file paths
 const path = require('path');
 // define the logs file name and folder name
@@ -15,6 +13,9 @@ const logFile = path.join(__dirname, folder, logs);
 // require the Circle module
 const circle = require('./modules/Circle');
 
+// require the ErrorsHandle module
+const errors = require('./modules/errors');
+
 // create the server
 const serve = http.createServer((req, res) => {
 
@@ -23,6 +24,7 @@ const serve = http.createServer((req, res) => {
 
     // calculate the area of a circle - input from terminal
     try {
+
         if (!process.argv[2]) throw new Error('Please provide a radius');
 
         let area = circle.area(process.argv[2]);
@@ -39,24 +41,8 @@ const serve = http.createServer((req, res) => {
         console.log(`The area of a circle with radius ${process.argv[2]} is ${area}`);
 
     } catch (error) {
-        res.writeHead(400, {
-            'Content-Type': 'text/plain',
-            'Cache-Control': 'no-cache',
-            'Pragma': 'no-cache',
-            'Expires': '0'
-        });
-
-        // check if the file exists
-        if (!fs.existsSync(logFile)) {
-            fs.writeFileSync(logFile, '');
-        }
-
-        // append the error to the file
-        fs.appendFileSync(logFile, `${new Date()} - ${error}\n`);
-
-        // return error message
-        res.write(error.message);
-        console.log(error.message);
+        // call the errors.handle function
+        errors.handle(400, error.message, res, logFile);
     }
 
     // end the response
@@ -64,7 +50,6 @@ const serve = http.createServer((req, res) => {
 });
 
 // listen on the port - 80 // run the server
-
 serve.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
