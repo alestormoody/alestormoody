@@ -39,6 +39,12 @@ const serve = http.createServer((req, res) => {
         console.log(`The area of a circle with radius ${process.argv[2]} is ${area}`);
 
     } catch (error) {
+        res.writeHead(400, {
+            'Content-Type': 'text/plain',
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache',
+            'Expires': '0'
+        });
 
         // check if the file exists
         if (!fs.existsSync(logFile)) {
@@ -48,6 +54,9 @@ const serve = http.createServer((req, res) => {
         // append the error to the file
         fs.appendFileSync(logFile, `${new Date()} - ${error}\n`);
 
+        // return error message
+        res.write(error.message);
+        console.log(error.message);
     }
 
     // end the response
