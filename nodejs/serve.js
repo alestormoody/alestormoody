@@ -11,7 +11,7 @@ const folder = 'storage/logs/';
 const logFile = path.join(__dirname, folder, logs);
 
 // require the Circle module
-const circle = require('./modules/Circle');
+const circle = require('./modules/circle');
 
 // require the ErrorsHandle module
 const errors = require('./modules/errors');
@@ -26,10 +26,10 @@ const serve = http.createServer((req, res) => {
     try {
 
         if (!process.argv[2]) throw new Error('Please provide a radius');
+        let radius = Number(process.argv[2]);
 
-        let area = circle.area(process.argv[2]);
+        if (!Number.isFinite(radius) || radius <= 0) throw new Error('Please provide a valid number');
 
-        if (isNaN(area) || process.argv[2] <= 0) throw new Error('Please provide a valid number');
         // set the response header
         res.writeHead(200, {
             'Content-Type': 'text/html',
@@ -37,6 +37,9 @@ const serve = http.createServer((req, res) => {
             'Pragma': 'no-cache',
             'Expires': '0'
         });
+
+        let area = circle.area(radius);
+
         res.write(`The area of a circle with radius ${process.argv[2]} is ${area}`);
         console.log(`The area of a circle with radius ${process.argv[2]} is ${area}`);
 
