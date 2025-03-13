@@ -1,45 +1,72 @@
-# Mini Progetto Node.js
+# Node.js Web Server
 
-## Descrizione
-Questo è un mini progetto sviluppato utilizzando Node.js. L'obiettivo del progetto è studiare le funzionalità di base di Node.js, inclusi la gestione dei pacchetti, la creazione di server HTTP e l'interazione con il file system.
+Questo progetto è un semplice server web creato con Node.js. Il server gestisce diverse rotte e restituisce contenuti appropriati per ciascuna di esse. Inoltre, gestisce gli errori e li registra in un file di log.
 
 ## Struttura del Progetto
+
 La struttura del progetto è la seguente:
+
 ```
 nodejs/
-├── src/
-│   ├── index.js
-│   ├── server.js
-│   └── utils.js
-├── package.json
-└── README.md
+├── modules/
+│   ├── errors.js
+│   ├── head.js
+│   └── router.js
+├── serve.js
+└── storage/
+    └── logs/
+        └── error.log
 ```
 
-- **src/**: Contiene i file sorgente del progetto.
-  - **index.js**: Il punto di ingresso principale dell'applicazione.
-  - **server.js**: Contiene la logica per la creazione del server HTTP.
-  - **utils.js**: Contiene funzioni di utilità utilizzate nel progetto.
-- **package.json**: Contiene le dipendenze e le informazioni sul progetto.
-- **README.md**: Questo file, che descrive il progetto.
+### Descrizione dei File
 
-## Requisiti
-- Node.js (versione 14 o superiore)
-- npm (Node Package Manager)
+- **serve.js**: Il file principale del server. Crea il server HTTP e gestisce le richieste utilizzando il modulo `router`.
+
+- **modules/errors.js**: Modulo per la gestione degli errori. Registra gli errori in un file di log e invia una risposta al client.
+
+- **modules/head.js**: Modulo per impostare le intestazioni delle risposte HTTP.
+
+- **modules/router.js**: Modulo per gestire le rotte del server. Restituisce contenuti appropriati in base all'URL della richiesta.
 
 ## Installazione
-Per installare le dipendenze del progetto, eseguire il seguente comando nella directory principale del progetto:
+
+1. Clona il repository:
+    ```bash
+    git clone https://github.com/tuo-username/tuo-repository.git
+    cd tuo-repository/nodejs
+    ```
+
+2. Installa le dipendenze (se presenti):
+    ```bash
+    npm install
+    ```
+
+## Utilizzo
+
+Per avviare il server, esegui il seguente comando:
 ```bash
-npm install
+node serve.js
 ```
 
-## Esecuzione
-Per avviare l'applicazione, eseguire il seguente comando:
+Il server sarà in esecuzione sulla porta `3000` per impostazione predefinita. Puoi specificare una porta diversa utilizzando la variabile d'ambiente `PORT`:
 ```bash
-node src/index.js
+PORT=4000 node serve.js
 ```
 
-## Contributi
-I contributi sono benvenuti! Sentiti libero di aprire issue e pull request per migliorare il progetto.
+## Rotte Disponibili
+
+- `GET /`: Restituisce la pagina home.
+- `GET /about`: Restituisce la pagina about.
+- `GET /404`: Restituisce una risposta 404 in formato JSON.
+
+## Gestione degli Errori
+
+Gli errori vengono gestiti e registrati nel file `storage/logs/error.log`. Il modulo `errors.js` si occupa di questa funzionalità.
+
+## Contribuire
+
+Se desideri contribuire a questo progetto, sentiti libero di aprire una pull request o segnalare un problema.
 
 ## Licenza
-Questo progetto è distribuito sotto la licenza MIT. Vedi il file [LICENSE](LICENSE) per maggiori dettagli.
+
+Questo progetto è distribuito sotto la licenza MIT. Vedi il file `LICENSE` per maggiori dettagli.
