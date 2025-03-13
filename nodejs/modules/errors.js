@@ -1,17 +1,20 @@
-function handle(err, message, res, logFile) {
-    const fs = require('fs');
+function handle(err, message, res) {
 
-    res.writeHead(err, {
-        'Content-Type': 'text/plain',
-        'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache',
-        'Expires': '0'
-    });
+    // require the  modules
+    const fs = require('fs');
+    const path = require('path');
+    const head = require('./head');
+
+    // define the logs file name and folder name
+    const logs = 'error.log';
+    const folder = 'storage/logs/';
+    const logFile = path.join(__dirname, folder, logs);
+
+    // set the response header
+    head.handle(err, 'application/json', res);
 
     // check if the file exists
-    if (!fs.existsSync(logFile)) {
-        fs.writeFileSync(logFile, '');
-    }
+    if (!fs.existsSync(logFile)) fs.writeFileSync(logFile, '');
 
     // append the error to the file
     fs.appendFileSync(logFile, `${new Date()} - ${message}\n`);
@@ -19,6 +22,7 @@ function handle(err, message, res, logFile) {
     // return error message
     res.write(message);
     console.log(message);
+
 }
 
 module.exports = { handle };

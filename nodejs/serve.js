@@ -1,58 +1,29 @@
-// require the http module
+// require the modules
 const http = require('http');
-// define the port
-const PORT = 80;
-
-// require the path module - to manipulate file paths
-const path = require('path');
-// define the logs file name and folder name
-const logs = 'error.log';
-const folder = 'storage/logs/';
-const logFile = path.join(__dirname, folder, logs);
-
-// require the Circle module
-const circle = require('./modules/circle');
-
-// require the ErrorsHandle module
 const errors = require('./modules/errors');
+const router = require('./modules/router');
+
+// configurations
+const PORT = process.argv[2] || 3000;
 
 // create the server
-const serve = http.createServer((req, res) => {
+const requestHandler = (req, res) => {
 
-    // to avoid favicon error that duplicate log errors
-    if (req.url === '/favicon.ico') return res.end();
+    // handle the favicon
+    if(req.url === '/favicon.ico') return;
 
-    // calculate the area of a circle - input from terminal
-    try {
-
-        if (!process.argv[2]) throw new Error('Please provide a radius');
-        let radius = Number(process.argv[2]);
-
-        if (!Number.isFinite(radius) || radius <= 0) throw new Error('Please provide a valid number');
-
-        // set the response header
-        res.writeHead(200, {
-            'Content-Type': 'text/html',
-            'Cache-Control': 'no-cache',
-            'Pragma': 'no-cache',
-            'Expires': '0'
-        });
-
-        let area = circle.area(radius);
-
-        res.write(`The area of a circle with radius ${process.argv[2]} is ${area}`);
-        console.log(`The area of a circle with radius ${process.argv[2]} is ${area}`);
-
-    } catch (error) {
-        // call the errors.handle function
-        errors.handle(400, error.message, res, logFile);
-    }
+    // handle the routes
+    router.handle(req, res);
 
     // end the response
-    res.end();
-});
+    res.end(JSON.stringify({ data: 'end here!' }));
+};
+
+const serve = http.createServer(requestHandler);
 
 // listen on the port - 80 // run the server
-serve.listen(PORT, () => {
+serve.listen(PORT, (err) => {
+    // handle the error on listening
+    if(err) errors.handle(500, err.message, res);
     console.log(`Server is running on port ${PORT}`);
 });
