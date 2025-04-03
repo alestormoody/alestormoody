@@ -1,3 +1,4 @@
+```
 project-management/
 ├── README.md
 ├── 01_Initiation/
@@ -29,3 +30,4 @@ project-management/
     ├── notion-template.md
     ├── jira-workflow.md
     └── checklists.md
+```
