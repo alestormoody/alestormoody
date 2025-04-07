@@ -1,4 +1,4 @@
-### 0 # Avvio del Progetto (Project Initiation)
+# 0 # Avvio del Progetto (Project Initiation)
 
 ## Panoramica
 
