@@ -69,4 +69,4 @@ Se desideri contribuire a questo progetto, sentiti libero di aprire una pull req
 
 ## Licenza
 
-Questo progetto è distribuito sotto la licenza MIT. Vedi il file `LICENSE` per maggiori dettagli.
+Questo progetto è distribuito sotto la licenza MIT. Vedi il file [LICENSE](LICENSE) per maggiori dettagli.
