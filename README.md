@@ -1,6 +1,9 @@
 ## Full Stack Developer | Project Manager | 🇮🇹 🇬🇧
 Hi! I’m Alessio Tortolini, a Full Stack Developer with expertise in PHP, JavaScript, CSS, and UI design. I specialize in backend development using PHP/Laravel.
 
+
+
+
 ### 🛠 Key Skills
 - **Backend**: PHP, Laravel, API, Microservices
 - **Frontend**: HTML5, CSS3, JavaScript, jQuery, Bootstrap, Tailwind
@@ -21,4 +24,7 @@ Hi! I’m Alessio Tortolini, a Full Stack Developer with expertise in PHP, JavaS
 
 ### 🌍 Languages
 - Italian (native)  
-- English (professional level)  
+- English (professional level)
+
+  
+[![My Skills](https://skillicons.dev/icons?i=html,css,js,jquery,sass,bootstrap,tailwind,figma,php,laravel,mysql,aws,docker,vscode,postman,bash,git,githubactions,github,bitbucket,aws,docker,jenkins)](https://skillicons.dev)
