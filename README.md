@@ -6,7 +6,7 @@ Hi! I’m Alessio Tortolini, a Full Stack Developer with expertise in PHP, JavaS
 
 ### 🛠 Key Skills
 - **Backend**: PHP, Laravel, API, Microservices
-- **Frontend**: HTML5, CSS3, JavaScript, jQuery, Bootstrap, Tailwind
+- **Frontend**: HTML, CSS, JavaScript, jQuery, Bootstrap, Tailwind
 - **Database**: MySQL, MariaDB
 - **DevOps**: AWS, Docker (basic knowledge)  
 - **Project Management**: Jira, Confluence, Trello, Asana, Monday, Notion  
