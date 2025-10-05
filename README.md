@@ -27,4 +27,4 @@ Hi! I’m Alessio Tortolini, a Full Stack Developer with expertise in PHP, JavaS
 - English (professional level)
 
   
-[![My Skills](https://skillicons.dev/icons?i=html,css,js,jquery,sass,bootstrap,tailwind,figma,php,laravel,mysql,aws,docker,vscode,postman,bash,git,githubactions,github,bitbucket,aws,docker,jenkins)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=html,css,js,jquery,sass,bootstrap,tailwind,figma,php,laravel,mysql,aws,docker,vscode,postman,bash,git,githubactions,github,bitbucket,jenkins)](https://skillicons.dev)
