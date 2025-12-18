@@ -2,10 +2,8 @@
 Hi! I’m Alessio Tortolini, a Full Stack Developer with expertise in PHP, JavaScript, CSS, and UI design. I specialize in backend development using PHP/Laravel.
 
 
-
-
 ### 🛠 Key Skills
-- **Backend**: PHP, Laravel, API, Microservices
+- **Backend**: PHP, Laravel (Filament), API, Microservices
 - **Frontend**: HTML, CSS, JavaScript, jQuery, Bootstrap, Tailwind
 - **Database**: MySQL, MariaDB
 - **DevOps**: AWS, Docker (basic knowledge)  
@@ -14,7 +12,8 @@ Hi! I’m Alessio Tortolini, a Full Stack Developer with expertise in PHP, JavaS
 ### 🚀 Recent Projects
 - Development and maintenance of a custom CMS for career websites (120+ sites implemented)  
 - Implementation of scalable solutions for job postings and candidate management  
-- Optimization of performance and security for web applications  
+- Optimization of performance and security for web applications
+- Development and maintenance of CRM for managing tasks, projects, leads, holidays, and teams
 
 ### 📚 Continuous Learning
 - Salesforce B2C Commerce Developer  
